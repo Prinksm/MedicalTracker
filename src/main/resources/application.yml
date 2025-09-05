@@ -1,0 +1,12 @@
+server:
+  port: 8089
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: argusadmin
+    url: jdbc:postgresql://localhost:5432/medicalTracker
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
