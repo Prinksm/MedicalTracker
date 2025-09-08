@@ -1,8 +1,10 @@
 package com.argusoft.medicalTracker.controller;
 import com.argusoft.medicalTracker.dto.DiagnosisDto;
+import com.argusoft.medicalTracker.dto.DiagnosisResponseDto;
 import com.argusoft.medicalTracker.entity.Diagnosis;
 import com.argusoft.medicalTracker.service.DiagnosisService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,17 +15,20 @@ public class DiagnosisController {
     @Autowired
     private DiagnosisService diagnosisService;
 
-    public List<Diagnosis> getAllDiagnosis(){
-        return diagnosisService.getAllDiagnosis();
+    @GetMapping
+    public ResponseEntity<List<DiagnosisResponseDto>> getAllDiagnosis(){
+        List<DiagnosisResponseDto>diagnosis = diagnosisService.getAllDiagnosis();
+        return ResponseEntity.ok(diagnosis) ;
     }
 
     @PostMapping("/saveDiagnosis")
-    public Diagnosis saveDiagnosis(@RequestBody DiagnosisDto diagnosis){
-        return diagnosisService.saveDiagnosis(diagnosis);
+    public ResponseEntity<String> saveDiagnosis(@RequestBody DiagnosisDto diagnosis){
+        return ResponseEntity.status(201).body(diagnosisService.saveDiagnosis(diagnosis));
     }
 
-    @PostMapping("/getDiagnosisByPatient")
-    public List<Diagnosis> getDiagnosisByPatientId(@PathVariable Long id){
-        return diagnosisService.getDiagnosisByPatientId(id);
+    @GetMapping("/getDiagnosisByPatient/{id}")
+    public ResponseEntity<List<DiagnosisResponseDto>> getDiagnosisByPatientId(@PathVariable Long id){
+        List<DiagnosisResponseDto>diagnosis = diagnosisService.getDiagnosisByPatientId(id);
+        return ResponseEntity.ok(diagnosis) ;
     }
 }

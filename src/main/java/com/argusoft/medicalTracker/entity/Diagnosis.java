@@ -14,6 +14,4 @@ public class Diagnosis {
     @ManyToOne
     private Patient patient;
 
-    @ManyToOne
-    private Doctor doctor;
 }
