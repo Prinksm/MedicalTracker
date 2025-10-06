@@ -15,6 +15,7 @@ public class Patient {
     private String name;
     private int age;
     private String gender;
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
