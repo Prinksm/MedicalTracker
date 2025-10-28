@@ -1,16 +1,15 @@
 package com.argusoft.medicalTracker.entity;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
+import com.argusoft.medicalTracker.type.RoleType;
+import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +19,7 @@ import lombok.Data;
 @Entity
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Table(name = "app_user")
 public class User implements UserDetails {
@@ -30,9 +30,12 @@ public class User implements UserDetails {
     @JoinColumn(unique = true, nullable = false)
     private String username;
     private String password;
-    @JoinColumn(unique = true, nullable = false)
-    private String email;
+//    @JoinColumn(unique = true, nullable = false)
+//    private String email;
 
+//    @ElementCollection(fetch = FetchType.EAGER)
+//     @Enumerated(EnumType.STRING)
+//    Set<RoleType> roles = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

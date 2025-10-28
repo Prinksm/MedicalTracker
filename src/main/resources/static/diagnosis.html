@@ -8,11 +8,23 @@
 <body>
 <div class="container mt-4">
     <h2 class="text-center">Diagnosis List</h2>
-    <div class="text-end mb-3">
-        <a href="add-diagnosis.html" class="btn btn-primary">Add Diagnosis</a>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <select id="searchType" class="form-select">
+                <option value="id">Search by ID</option>
+                <option value="patientName">Search by Patient Name</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <input type="text" id="searchInput" class="form-control" placeholder="Enter search value...">
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary w-100" onclick="searchDiagnosis()">Search</button>
+        </div>
     </div>
-    <table class="table table-bordered">
-        <thead>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
         <tr>
             <th>ID</th>
             <th>Description</th>
@@ -23,6 +35,9 @@
         <tbody id="diagnosisTableBody">
         </tbody>
     </table>
+    <div class="text-center mb-3">
+        <a href="add-diagnosis.html" class="btn btn-primary">Add Diagnosis</a>
+    </div>
 </div>
 <script src="js/diagnosis.js"></script>
 </body>

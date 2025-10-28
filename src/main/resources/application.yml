@@ -3,12 +3,17 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    password: admin
+    password: argusadmin
     url: jdbc:postgresql://localhost:5432/medicalTracker
     username: postgres
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+  security.oauth2.client:
+    registration:
+      google:
+        client-id: geyuqif93f8
+        client-secret: iejrf89fhejvb
 jwt:
   secret: fjoqfihoq49034838trjhfhiidncnkriow0f

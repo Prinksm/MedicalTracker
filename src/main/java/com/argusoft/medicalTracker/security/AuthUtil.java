@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class AuthUtil {
-    @Value("${jwt.secretKey}")
+    @Value("${jwt.secret}")
     private String jwtSecretKey;
 
     private SecretKey getSecretKey() {

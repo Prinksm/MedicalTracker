@@ -10,5 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DiagnosisResponseDto {
+    private Long id;
     private String description;
+    private String patientName;
 }

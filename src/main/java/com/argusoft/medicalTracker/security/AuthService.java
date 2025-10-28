@@ -46,6 +46,8 @@ public class AuthService {
                 .password(passwordEncoder.encode(signupRequestDto.getPassword()))
                 .build();
 
+        userRepository.save(user);
+
         return new SignupResponseDto(user.getId(), user.getUsername());
     }
 }
